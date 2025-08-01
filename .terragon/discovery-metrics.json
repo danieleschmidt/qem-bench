@@ -1,0 +1,29 @@
+{
+  "discovery_timestamp": "2025-08-01T02:53:53.262144",
+  "items_discovered": 6,
+  "highest_value_score": 89.4,
+  "total_estimated_hours": 25.0,
+  "category_breakdown": {
+    "security": {
+      "count": 3,
+      "avg_score": 79.73333333333333,
+      "total_hours": 8.0
+    },
+    "quality": {
+      "count": 1,
+      "avg_score": 62.9,
+      "total_hours": 6.0
+    },
+    "testing": {
+      "count": 1,
+      "avg_score": 52.6,
+      "total_hours": 6.0
+    },
+    "documentation": {
+      "count": 1,
+      "avg_score": 41.2,
+      "total_hours": 5.0
+    }
+  },
+  "autonomous_ready_count": 5
+}
