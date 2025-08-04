@@ -267,3 +267,256 @@ def two_qubit_depolarizing_kraus_operators(p: float) -> List[jnp.ndarray]:
             kraus_ops.append(coeff * two_qubit_pauli)
     
     return kraus_ops
+
+
+def generalized_amplitude_damping_kraus_operators(
+    gamma: float, 
+    temperature: float = 0.0
+) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for generalized amplitude damping channel.
+    
+    Includes thermal effects at finite temperature.
+    
+    Args:
+        gamma: Decay probability
+        temperature: Thermal excitation probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    p = temperature / (1 + temperature) if temperature > 0 else 0.0
+    
+    # Four Kraus operators for generalized amplitude damping
+    K0 = jnp.array([
+        [1, 0],
+        [0, jnp.sqrt(1 - gamma)]
+    ], dtype=jnp.complex64)
+    
+    K1 = jnp.array([
+        [0, jnp.sqrt(gamma * (1 - p))],
+        [0, 0]
+    ], dtype=jnp.complex64)
+    
+    K2 = jnp.array([
+        [jnp.sqrt(gamma * p), 0],
+        [0, 0]
+    ], dtype=jnp.complex64)
+    
+    K3 = jnp.array([
+        [0, 0],
+        [jnp.sqrt(gamma * p), jnp.sqrt(1 - gamma)]
+    ], dtype=jnp.complex64)
+    
+    return [K0, K1, K2, K3]
+
+
+def bit_flip_kraus_operators(p: float) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for bit flip channel.
+    
+    Args:
+        p: Bit flip probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    paulis = pauli_kraus_operators()
+    
+    return [
+        jnp.sqrt(1 - p) * paulis["I"],
+        jnp.sqrt(p) * paulis["X"]
+    ]
+
+
+def phase_flip_kraus_operators(p: float) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for phase flip channel.
+    
+    Args:
+        p: Phase flip probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    paulis = pauli_kraus_operators()
+    
+    return [
+        jnp.sqrt(1 - p) * paulis["I"],
+        jnp.sqrt(p) * paulis["Z"]
+    ]
+
+
+def bit_phase_flip_kraus_operators(p: float) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for bit-phase flip channel.
+    
+    Args:
+        p: Bit-phase flip probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    paulis = pauli_kraus_operators()
+    
+    return [
+        jnp.sqrt(1 - p) * paulis["I"],
+        jnp.sqrt(p) * paulis["Y"]
+    ]
+
+
+def pauli_channel_kraus_operators(px: float, py: float, pz: float) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for general Pauli channel.
+    
+    Args:
+        px: X error probability
+        py: Y error probability  
+        pz: Z error probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    pi = 1 - px - py - pz
+    if pi < 0:
+        raise ValueError("Probabilities must sum to <= 1")
+    
+    paulis = pauli_kraus_operators()
+    
+    return [
+        jnp.sqrt(pi) * paulis["I"],
+        jnp.sqrt(px) * paulis["X"],
+        jnp.sqrt(py) * paulis["Y"],
+        jnp.sqrt(pz) * paulis["Z"]
+    ]
+
+
+def thermal_relaxation_kraus_operators(
+    t1: float,
+    t2: float, 
+    gate_time: float,
+    excited_state_population: float = 0.0
+) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for thermal relaxation channel.
+    
+    Models both T1 and T2 processes with optional thermal population.
+    
+    Args:
+        t1: T1 relaxation time
+        t2: T2 dephasing time
+        gate_time: Duration of gate operation
+        excited_state_population: Thermal population of excited state
+        
+    Returns:
+        List of Kraus operators
+    """
+    # Calculate decay probabilities
+    gamma1 = 1 - jnp.exp(-gate_time / t1) if t1 > 0 else 0.0
+    gamma_phi = 1 - jnp.exp(-gate_time / t2) if t2 > 0 else 0.0
+    
+    # Effective dephasing rate
+    gamma2 = gamma_phi - gamma1 / 2
+    gamma2 = jnp.maximum(0.0, gamma2)
+    
+    # Thermal population
+    p_th = excited_state_population
+    
+    # Kraus operators for thermal relaxation
+    K0 = jnp.array([
+        [1, 0],
+        [0, jnp.sqrt(1 - gamma1)]
+    ], dtype=jnp.complex64)
+    
+    K1 = jnp.array([
+        [0, jnp.sqrt(gamma1 * (1 - p_th))],
+        [0, 0]
+    ], dtype=jnp.complex64)
+    
+    K2 = jnp.array([
+        [jnp.sqrt(gamma1 * p_th), 0],
+        [0, 0]
+    ], dtype=jnp.complex64)
+    
+    K3 = jnp.array([
+        [0, 0],
+        [0, jnp.sqrt(gamma2)]
+    ], dtype=jnp.complex64)
+    
+    return [K0, K1, K2, K3]
+
+
+def reset_kraus_operators(p: float) -> List[jnp.ndarray]:
+    """
+    Generate Kraus operators for reset channel.
+    
+    Resets qubit to |0⟩ state with probability p.
+    
+    Args:
+        p: Reset probability
+        
+    Returns:
+        List of Kraus operators
+    """
+    # No reset
+    K0 = jnp.sqrt(1 - p) * jnp.eye(2, dtype=jnp.complex64)
+    
+    # Reset to |0⟩
+    K1 = jnp.sqrt(p) * jnp.array([
+        [1, 0],
+        [1, 0]
+    ], dtype=jnp.complex64)
+    
+    return [K0, K1]
+
+
+# Advanced noise channel utilities
+class NoiseChannelFactory:
+    """Factory class for creating common noise channels."""
+    
+    @staticmethod
+    def depolarizing(p: float, name: str = "depolarizing") -> NoiseChannel:
+        """Create depolarizing noise channel."""
+        kraus_ops = depolarizing_kraus_operators(p)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
+    
+    @staticmethod
+    def amplitude_damping(gamma: float, name: str = "amplitude_damping") -> NoiseChannel:
+        """Create amplitude damping noise channel."""
+        kraus_ops = amplitude_damping_kraus_operators(gamma)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
+    
+    @staticmethod
+    def phase_damping(gamma: float, name: str = "phase_damping") -> NoiseChannel:
+        """Create phase damping noise channel."""
+        kraus_ops = phase_damping_kraus_operators(gamma)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
+    
+    @staticmethod
+    def thermal_relaxation(
+        t1: float, 
+        t2: float, 
+        gate_time: float, 
+        temperature: float = 0.0,
+        name: str = "thermal_relaxation"
+    ) -> NoiseChannel:
+        """Create thermal relaxation noise channel."""
+        kraus_ops = thermal_relaxation_kraus_operators(t1, t2, gate_time, temperature)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
+    
+    @staticmethod
+    def pauli_channel(
+        px: float, 
+        py: float, 
+        pz: float, 
+        name: str = "pauli_channel"
+    ) -> NoiseChannel:
+        """Create general Pauli channel."""
+        kraus_ops = pauli_channel_kraus_operators(px, py, pz)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
+    
+    @staticmethod
+    def two_qubit_depolarizing(p: float, name: str = "two_qubit_depolarizing") -> NoiseChannel:
+        """Create two-qubit depolarizing channel."""
+        kraus_ops = two_qubit_depolarizing_kraus_operators(p)
+        return NoiseChannel(name=name, kraus_operators=kraus_ops)
