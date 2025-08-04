@@ -28,7 +28,7 @@ pip install qem-bench[hardware]
 pip install qem-bench[full]
 
 # Development installation
-git clone https://github.com/yourusername/qem-bench
+git clone https://github.com/danieleschmidt/qem-bench
 cd qem-bench
 pip install -e ".[dev]"
 ```
@@ -490,9 +490,9 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ```bibtex
 @software{qem_bench,
   title={QEM-Bench: Benchmarking Quantum Error Mitigation},
-  author={Your Name},
+  author={Daniel Schmidt},
   year={2025},
-  url={https://github.com/yourusername/qem-bench}
+  url={https://github.com/danieleschmidt/qem-bench}
 }
 
 @article{ibm_zne_2025,
