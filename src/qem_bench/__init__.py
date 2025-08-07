@@ -75,6 +75,13 @@ from .optimization.optimized_mitigation import create_optimized_mitigation
 # Benchmarking suite
 from .optimization.benchmarks import QuantumBenchmarks, create_benchmark_suite
 
+# Quantum-inspired task planning
+from .planning import (
+    QuantumInspiredPlanner, QEMPlannerIntegration, QuantumTaskOptimizer,
+    QuantumScheduler, PlanningAnalyzer, HighPerformancePlanner,
+    PlanningConfig, OptimizationStrategy, SchedulingPolicy, ComputeBackend
+)
+
 __all__ = [
     "__version__",
     # Core mitigation methods
@@ -159,4 +166,16 @@ __all__ = [
     # Benchmarking suite
     "QuantumBenchmarks",
     "create_benchmark_suite",
+    
+    # Quantum-inspired task planning
+    "QuantumInspiredPlanner",
+    "QEMPlannerIntegration", 
+    "QuantumTaskOptimizer",
+    "QuantumScheduler",
+    "PlanningAnalyzer",
+    "HighPerformancePlanner",
+    "PlanningConfig",
+    "OptimizationStrategy",
+    "SchedulingPolicy",
+    "ComputeBackend",
 ]

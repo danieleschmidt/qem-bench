@@ -6,6 +6,16 @@ Comprehensive benchmark suite and JAX implementation for Quantum Error Mitigatio
 
 QEM-Bench provides researchers with tools to implement, evaluate, and compare quantum error mitigation techniques. The framework includes reference implementations of state-of-the-art methods, standardized benchmarks, and integration with major quantum computing platforms.
 
+### ⚡ NEW: Quantum-Inspired Task Planning
+
+QEM-Bench now includes a comprehensive **Quantum-Inspired Task Planning** module that brings quantum optimization principles to classical task scheduling and resource allocation:
+
+- **🧠 Quantum Algorithms**: Superposition, entanglement, and interference for optimization
+- **🚀 Enterprise Scale**: High-performance computing with GPU/TPU acceleration  
+- **🛡️ Production Ready**: Fault tolerance, validation, and comprehensive error handling
+- **🌍 Global First**: Multi-language support, regulatory compliance, multi-region deployment
+- **🔗 QEM Integration**: Seamless integration with quantum error mitigation workflows
+
 ## Key Features
 
 - **Complete QEM Toolkit**: Zero-noise extrapolation, probabilistic error cancellation, virtual distillation
@@ -14,6 +24,7 @@ QEM-Bench provides researchers with tools to implement, evaluate, and compare qu
 - **Benchmark Suite**: Standardized circuits for comparing mitigation techniques
 - **Noise Replay**: Record and replay real device noise for reproducible experiments
 - **Automated Calibration**: Adaptive error mitigation based on device characterization
+- **🆕 Quantum Planning**: Advanced task scheduling with quantum-inspired optimization
 
 ## Installation
 
@@ -64,6 +75,44 @@ mitigated_result = zne.run(
 print(f"Raw expectation: {mitigated_result.raw_value:.4f}")
 print(f"Mitigated expectation: {mitigated_result.mitigated_value:.4f}")
 print(f"Error reduction: {mitigated_result.error_reduction:.1%}")
+```
+
+### ⚡ Quantum-Inspired Task Planning
+
+```python
+from qem_bench.planning import QuantumInspiredPlanner, Task, PlanningConfig
+
+# Create quantum planner
+config = PlanningConfig(
+    max_iterations=1000,
+    superposition_width=0.1,
+    entanglement_strength=0.5
+)
+planner = QuantumInspiredPlanner(config)
+
+# Define quantum circuit tasks
+task1 = Task(
+    id="bell_state",
+    name="Bell State Preparation", 
+    complexity=2.0,
+    resources={'qubits': 2, 'time': 10}
+)
+
+task2 = Task(
+    id="qft_8q",
+    name="8-Qubit QFT",
+    complexity=8.0,
+    dependencies=["bell_state"],
+    resources={'qubits': 8, 'time': 45}
+)
+
+# Add tasks and optimize
+planner.add_task(task1)
+planner.add_task(task2)
+
+result = planner.plan(objective="minimize_completion_time")
+print(f"Optimal schedule: {len(result['schedule'])} tasks")
+print(f"Quantum fidelity: {result['quantum_fidelity']:.3f}")
 ```
 
 ### Probabilistic Error Cancellation
