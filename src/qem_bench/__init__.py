@@ -82,6 +82,29 @@ from .planning import (
     PlanningConfig, OptimizationStrategy, SchedulingPolicy, ComputeBackend
 )
 
+# NEW: Adaptive Error Mitigation with Machine Learning
+from .mitigation.adaptive import (
+    AdaptiveZNE, AdaptiveZNEConfig, LearningStrategy,
+    ParameterOptimizer, OptimizationHistory,
+    DeviceProfiler, DeviceProfile, PerformancePredictor, 
+    LearningEngine, ExperienceBuffer,
+    adaptive_zero_noise_extrapolation, create_research_adaptive_zne
+)
+
+# NEW: Intelligent Multi-Backend Orchestration  
+from .orchestration import (
+    BackendOrchestrator, OrchestrationConfig, BackendSelector,
+    LoadBalancer, QueuePredictor, IntelligentRouter,
+    BackendCapabilities, BackendMetrics, BackendStatus
+)
+
+# NEW: Statistical Validation and Testing Framework
+from .validation import (
+    StatisticalValidator, HypothesisTest, TestResult, EffectSize,
+    PowerAnalysis, ExperimentFramework, ReproducibilityManager,
+    CrossValidator, BenchmarkSuite
+)
+
 __all__ = [
     "__version__",
     # Core mitigation methods
@@ -178,4 +201,40 @@ __all__ = [
     "OptimizationStrategy",
     "SchedulingPolicy",
     "ComputeBackend",
+    
+    # NEW: Adaptive Error Mitigation with ML
+    "AdaptiveZNE",
+    "AdaptiveZNEConfig", 
+    "LearningStrategy",
+    "ParameterOptimizer",
+    "OptimizationHistory",
+    "DeviceProfiler",
+    "DeviceProfile",
+    "PerformancePredictor",
+    "LearningEngine", 
+    "ExperienceBuffer",
+    "adaptive_zero_noise_extrapolation",
+    "create_research_adaptive_zne",
+    
+    # NEW: Intelligent Multi-Backend Orchestration
+    "BackendOrchestrator",
+    "OrchestrationConfig",
+    "BackendSelector", 
+    "LoadBalancer",
+    "QueuePredictor",
+    "IntelligentRouter",
+    "BackendCapabilities",
+    "BackendMetrics",
+    "BackendStatus",
+    
+    # NEW: Statistical Validation Framework
+    "StatisticalValidator",
+    "HypothesisTest",
+    "TestResult",
+    "EffectSize",
+    "PowerAnalysis", 
+    "ExperimentFramework",
+    "ReproducibilityManager",
+    "CrossValidator",
+    "BenchmarkSuite",
 ]
