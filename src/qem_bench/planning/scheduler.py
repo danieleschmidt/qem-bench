@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 
 from .core import Task, TaskState, PlanningConfig
 from .optimizer import QuantumTaskOptimizer, OptimizationStrategy
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 class SchedulingPolicy(Enum):

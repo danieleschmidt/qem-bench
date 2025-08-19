@@ -8,7 +8,7 @@ and JAX acceleration for large-scale task planning.
 import jax
 import jax.numpy as jnp
 from dataclasses import dataclass
-from typing import List, Dict, Any, Optional, Callable, Union
+from typing import Tuple, List, Dict, Any, Optional, Callable, Union
 from enum import Enum
 import numpy as np
 

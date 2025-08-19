@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 import heapq
 
 from ..security import SecureConfig
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 logger = logging.getLogger(__name__)

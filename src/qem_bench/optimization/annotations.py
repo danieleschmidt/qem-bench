@@ -102,7 +102,7 @@ class PerformanceRegistry:
     def __init__(self):
         self.profiles: Dict[str, PerformanceProfile] = {}
         self.metrics_history: List[ExecutionMetrics] = []
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
     
     def register_profile(self, profile: PerformanceProfile) -> None:
         """Register a performance profile."""

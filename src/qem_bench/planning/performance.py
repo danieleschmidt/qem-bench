@@ -25,7 +25,7 @@ import os
 from .core import Task, PlanningConfig
 from .optimizer import OptimizationStrategy, OptimizationResult
 from ..optimization import PerformanceOptimizer, CacheManager
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 class ComputeBackend(Enum):

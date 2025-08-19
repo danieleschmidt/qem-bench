@@ -13,9 +13,9 @@ from enum import Enum
 import numpy as np
 from datetime import datetime, timedelta
 
-from ..jax.states import QuantumState
+# from ..jax.states import QuantumState  # Not available
 from ..optimization import PerformanceOptimizer
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 class TaskState(Enum):

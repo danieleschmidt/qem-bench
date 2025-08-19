@@ -18,7 +18,7 @@ import pickle
 
 from .core import Task, TaskState, PlanningConfig
 from .validation import ValidationError, ErrorSeverity
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 class RecoveryStrategy(Enum):

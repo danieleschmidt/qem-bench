@@ -80,4 +80,3 @@ __all__ = [
     "validate_benchmark_parameters",
     "get_benchmark_info"
 ]
-EOF < /dev/null
