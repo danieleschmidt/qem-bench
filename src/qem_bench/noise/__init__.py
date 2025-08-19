@@ -16,8 +16,8 @@ Example:
     >>> noise_model = create_device_noise_model(
     ...     device_type="superconducting",
     ...     num_qubits=5,
-    ...     t1_time=100.0,  # 廣
-    ...     t2_time=50.0,   # 廣
+    ...     t1_time=100.0,  # 翹s
+    ...     t2_time=50.0,   # 翹s
     ...     readout_fidelity=0.98
     ... )
     >>> 
@@ -26,6 +26,9 @@ Example:
     >>> profile = profiler.characterize_device("my_device", num_qubits=5)
     >>> device_noise_model = profiler.create_noise_model(profile)
 """
+
+from typing import List
+import numpy as np
 
 # Base classes
 from .models.base import (
@@ -179,8 +182,8 @@ def create_superconducting_noise_model(
     
     Args:
         num_qubits: Number of qubits
-        t1_time: T1 relaxation time (廣)
-        t2_time: T2 dephasing time (廣)
+        t1_time: T1 relaxation time (翹s)
+        t2_time: T2 dephasing time (翹s)
         single_gate_error: Single-qubit gate error rate
         two_gate_error: Two-qubit gate error rate
         readout_fidelity: Readout fidelity
@@ -370,7 +373,7 @@ def create_photonic_noise_model(
 def create_neutral_atom_noise_model(
     num_atoms: int,
     trap_lifetime: float = 30.0,  # s
-    rydberg_decay: float = 1.0,   # 廣
+    rydberg_decay: float = 1.0,   # 翹s
     single_gate_error: float = 0.002,
     two_gate_error: float = 0.02,
     readout_fidelity: float = 0.97,
@@ -382,7 +385,7 @@ def create_neutral_atom_noise_model(
     Args:
         num_atoms: Number of atoms
         trap_lifetime: Atom loss time (s)
-        rydberg_decay: Rydberg state decay time (廣)
+        rydberg_decay: Rydberg state decay time (翹s)
         single_gate_error: Single-atom gate error rate
         two_gate_error: Rydberg blockade gate error rate
         readout_fidelity: Fluorescence detection fidelity
@@ -394,7 +397,7 @@ def create_neutral_atom_noise_model(
     noise_models = []
     
     # Atom loss
-    t1_times = {i: trap_lifetime * 1e6 for i in range(num_atoms)}  # Convert to 廣
+    t1_times = {i: trap_lifetime * 1e6 for i in range(num_atoms)}  # Convert to 翹s
     loss_model = AmplitudeDampingNoiseModel(t1_times=t1_times)
     noise_models.append(loss_model)
     

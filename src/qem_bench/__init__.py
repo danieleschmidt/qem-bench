@@ -57,9 +57,7 @@ from .security import (
 from .optimization import (
     PerformanceOptimizer, OptimizationConfig, CacheManager, CacheConfig,
     JITCompiler, CompilationConfig, ParallelExecutor, ExecutionStrategy,
-    MemoryManager, PerformanceProfiler, AutoScaler, LoadBalancer,
-    create_performance_optimizer, create_cache_manager, create_jit_compiler,
-    create_parallel_executor, create_memory_manager, create_profiler
+    MemoryManager, PerformanceProfiler, AutoScaler, LoadBalancer
 )
 
 # Performance annotations
@@ -88,22 +86,22 @@ from .mitigation.adaptive import (
     ParameterOptimizer, OptimizationHistory,
     DeviceProfiler, DeviceProfile, PerformancePredictor, 
     LearningEngine, ExperienceBuffer,
-    adaptive_zero_noise_extrapolation, create_research_adaptive_zne
+    # adaptive_zero_noise_extrapolation, create_research_adaptive_zne  # Functions missing
 )
 
-# NEW: Intelligent Multi-Backend Orchestration  
-from .orchestration import (
-    BackendOrchestrator, OrchestrationConfig, BackendSelector,
-    LoadBalancer, QueuePredictor, IntelligentRouter,
-    BackendCapabilities, BackendMetrics, BackendStatus
-)
+# NEW: Intelligent Multi-Backend Orchestration (many modules missing - commenting out)
+# from .orchestration import (
+#     BackendOrchestrator, OrchestrationConfig, BackendSelector,
+#     LoadBalancer, QueuePredictor, IntelligentRouter,
+#     BackendCapabilities, BackendMetrics, BackendStatus
+# )
 
-# NEW: Statistical Validation and Testing Framework
-from .validation import (
-    StatisticalValidator, HypothesisTest, TestResult, EffectSize,
-    PowerAnalysis, ExperimentFramework, ReproducibilityManager,
-    CrossValidator, BenchmarkSuite
-)
+# NEW: Statistical Validation and Testing Framework (many modules missing - commenting out)
+# from .validation import (
+#     StatisticalValidator, HypothesisTest, TestResult, EffectSize,
+#     PowerAnalysis, ExperimentFramework, ReproducibilityManager,
+#     CrossValidator, BenchmarkSuite
+# )
 
 __all__ = [
     "__version__",
@@ -169,12 +167,6 @@ __all__ = [
     "PerformanceProfiler",
     "AutoScaler",
     "LoadBalancer",
-    "create_performance_optimizer",
-    "create_cache_manager",
-    "create_jit_compiler",
-    "create_parallel_executor",
-    "create_memory_manager",
-    "create_profiler",
     # Performance annotations
     "performance_profile",
     "performance_monitor",
@@ -213,28 +205,28 @@ __all__ = [
     "PerformancePredictor",
     "LearningEngine", 
     "ExperienceBuffer",
-    "adaptive_zero_noise_extrapolation",
-    "create_research_adaptive_zne",
+    # "adaptive_zero_noise_extrapolation",  # Function missing
+    # "create_research_adaptive_zne",       # Function missing
     
-    # NEW: Intelligent Multi-Backend Orchestration
-    "BackendOrchestrator",
-    "OrchestrationConfig",
-    "BackendSelector", 
-    "LoadBalancer",
-    "QueuePredictor",
-    "IntelligentRouter",
-    "BackendCapabilities",
-    "BackendMetrics",
-    "BackendStatus",
+    # NEW: Intelligent Multi-Backend Orchestration (commented out - modules missing)
+    # "BackendOrchestrator",
+    # "OrchestrationConfig",
+    # "BackendSelector", 
+    # "LoadBalancer",
+    # "QueuePredictor",
+    # "IntelligentRouter",
+    # "BackendCapabilities",
+    # "BackendMetrics",
+    # "BackendStatus",
     
-    # NEW: Statistical Validation Framework
-    "StatisticalValidator",
-    "HypothesisTest",
-    "TestResult",
-    "EffectSize",
-    "PowerAnalysis", 
-    "ExperimentFramework",
-    "ReproducibilityManager",
-    "CrossValidator",
-    "BenchmarkSuite",
+    # NEW: Statistical Validation Framework (commented out - modules missing)
+    # "StatisticalValidator",
+    # "HypothesisTest",
+    # "TestResult",
+    # "EffectSize",
+    # "PowerAnalysis", 
+    # "ExperimentFramework",
+    # "ReproducibilityManager",
+    # "CrossValidator",
+    # "BenchmarkSuite",
 ]

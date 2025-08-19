@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 import concurrent.futures
 
 from ..security import SecureConfig, AccessControl
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 logger = logging.getLogger(__name__)

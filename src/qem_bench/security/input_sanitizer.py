@@ -538,3 +538,19 @@ class InputSanitizer:
         """Remove a sanitization rule."""
         if input_type in self.rules:
             del self.rules[input_type]
+
+
+# Global sanitizer instance
+_global_sanitizer = None
+
+def get_global_input_sanitizer() -> InputSanitizer:
+    """Get the global input sanitizer instance."""
+    global _global_sanitizer
+    if _global_sanitizer is None:
+        _global_sanitizer = InputSanitizer()
+    return _global_sanitizer
+
+def set_global_input_sanitizer(sanitizer: InputSanitizer):
+    """Set the global input sanitizer instance."""
+    global _global_sanitizer
+    _global_sanitizer = sanitizer

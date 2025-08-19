@@ -20,7 +20,7 @@ from ..errors import SecurityError, ValidationError
 from .access_control import Permission, get_global_access_control
 from .input_sanitizer import InputType, get_global_input_sanitizer
 from .resource_limiter import ResourceType, get_global_resource_limiter
-from .audit_logger import AuditEventType, AuditLevel, get_global_audit_logger
+from .audit_logger import AuditEventType, AuditLevel, get_audit_logger
 from .crypto_utils import get_crypto_utils
 
 
@@ -203,7 +203,7 @@ def audit_log(
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
-            audit_logger = get_global_audit_logger()
+            audit_logger = get_audit_logger()
             
             # Extract user_id
             user_id = kwargs.get('user_id')
@@ -498,7 +498,7 @@ def error_handler(
                 return func(*args, **kwargs)
             except Exception as e:
                 if log_errors:
-                    audit_logger = get_global_audit_logger()
+                    audit_logger = get_audit_logger()
                     user_id = kwargs.get('user_id') or (args[0].user_id if args and hasattr(args[0], 'user_id') else None)
                     
                     audit_logger.log_security_event(

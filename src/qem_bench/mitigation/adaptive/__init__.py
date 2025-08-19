@@ -9,7 +9,7 @@ from .adaptive_zne import AdaptiveZNE, AdaptiveZNEConfig, LearningStrategy
 from .parameter_optimizer import ParameterOptimizer, OptimizationHistory
 from .device_profiler import DeviceProfiler, DeviceProfile
 from .performance_predictor import PerformancePredictor, PredictionModel
-from .adaptive_pec import AdaptivePEC, AdaptivePECConfig
+# from .adaptive_pec import AdaptivePEC, AdaptivePECConfig  # Module missing
 from .learning_engine import LearningEngine, ExperienceBuffer
 
 __all__ = [

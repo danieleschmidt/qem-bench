@@ -22,7 +22,8 @@ from ..mitigation.zne import ZeroNoiseExtrapolation
 from ..mitigation.pec import ProbabilisticErrorCancellation
 from ..mitigation.vd import VirtualDistillation
 from ..mitigation.cdr import CliffordDataRegression
-from ..monitoring import SystemMonitor, MetricsCollector
+from ..monitoring import SystemMonitor
+from ..metrics import MetricsCollector
 from ..optimization import PerformanceOptimizer
 from ..scaling import AutoScaler, ResourceOptimizer
 from ..security import SecureConfig, InputSanitizer

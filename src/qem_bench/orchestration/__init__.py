@@ -20,19 +20,19 @@ from .backend_orchestrator import (
     QueuePredictor
 )
 
-from .intelligent_router import (
-    IntelligentRouter,
-    RoutingStrategy,
-    RoutingDecision,
-    RoutingMetrics
-)
+# from .intelligent_router import (  # Module missing
+#     IntelligentRouter,
+#     RoutingStrategy,
+#     RoutingDecision,
+#     RoutingMetrics
+# )
 
-from .performance_optimizer import (
-    CrossBackendOptimizer,
-    OptimizationObjective,
-    PerformanceModel,
-    ResourceAllocator
-)
+# from .performance_optimizer import (  # Module missing
+#     CrossBackendOptimizer,
+#     OptimizationObjective,
+#     PerformanceModel,
+#     ResourceAllocator
+# )
 
 from .fault_tolerance import (
     FaultTolerantExecutor,

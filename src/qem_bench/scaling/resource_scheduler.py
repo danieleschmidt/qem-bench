@@ -18,7 +18,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 from ..security import SecureConfig, AccessControl
-from ..monitoring import MetricsCollector
+from ..metrics import MetricsCollector
 
 
 logger = logging.getLogger(__name__)

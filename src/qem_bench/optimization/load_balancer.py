@@ -6,7 +6,7 @@ by the auto_scaler module. It contains the core load balancing
 algorithms and backend management.
 """
 
-from .auto_scaler import LoadBalancer, LoadBalancingStrategy, BalancingStrategy
+from .auto_scaler import LoadBalancer, LoadBalancingStrategy
 
 # Re-export the main classes for convenience
 __all__ = ["LoadBalancer", "LoadBalancingStrategy"]

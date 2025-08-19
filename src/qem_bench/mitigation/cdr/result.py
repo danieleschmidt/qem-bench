@@ -136,7 +136,7 @@ class CDRResult:
                 ax1.errorbar(
                     [1], [self.mitigated_value],
                     yerr=[[self.mitigated_value - ci["lower"]], 
-                          [ci["upper"] - self.mitigated_value]]],
+                          [ci["upper"] - self.mitigated_value]],
                     fmt='none', color='black', capsize=5,
                     label='95% Confidence Interval'
                 )
