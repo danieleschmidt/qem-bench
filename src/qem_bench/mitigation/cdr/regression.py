@@ -17,7 +17,7 @@ try:
     SKLEARN_AVAILABLE = True
 except ImportError:
     SKLEARN_AVAILABLE = False
-    warnings.warn("scikit-learn not available, using JAX implementations only")
+    warnings.warn("scikit-learn not available, using JAX implementations only", ImportWarning)
 
 
 class BaseRegressor(ABC):

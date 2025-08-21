@@ -7,7 +7,7 @@ import time
 import logging
 from typing import Dict, List, Optional, Any, Tuple
 from packaging import version
-import pkg_resources
+import importlib.metadata as importlib_metadata
 
 from .health_checker import HealthCheckProvider, HealthCheck, HealthStatus
 
@@ -192,11 +192,10 @@ class DependencyChecker(HealthCheckProvider):
             if hasattr(module, '__version__'):
                 package_version = module.__version__
             else:
-                # Try to get from pkg_resources
+                # Try to get from importlib.metadata
                 try:
-                    dist = pkg_resources.get_distribution(package_name)
-                    package_version = dist.version
-                except:
+                    package_version = importlib_metadata.version(package_name)
+                except (importlib_metadata.PackageNotFoundError, Exception):
                     pass
             
             # Check version if specified
