@@ -130,7 +130,7 @@ class PerformanceOptimizer:
             config: Optimization configuration (uses defaults if None)
         """
         self.config = config or OptimizationConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Performance tracking
         self.performance_history: List[Dict[str, Any]] = []

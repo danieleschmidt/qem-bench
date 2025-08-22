@@ -94,7 +94,7 @@ class MemoryPool:
     
     def __init__(self, config: MemoryConfig):
         self.config = config
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Pool storage
         self.blocks: Dict[str, MemoryBlock] = {}
@@ -463,7 +463,7 @@ class MemoryManager:
             config: Memory management configuration
         """
         self.config = config or MemoryConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Initialize memory pool
         self.pool = MemoryPool(self.config)

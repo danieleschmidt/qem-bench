@@ -34,7 +34,7 @@ class OptimizedMitigationMixin:
         """
         self._original = original_instance
         self._optimizer = optimizer
-        self._logger = get_logger(__name__)
+        self._logger = get_logger()
         
         # Copy attributes from original instance
         for attr_name in dir(original_instance):
