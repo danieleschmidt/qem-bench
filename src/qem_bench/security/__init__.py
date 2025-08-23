@@ -23,6 +23,7 @@ Key Components:
 - AuditLogger: Security event logging
 """
 
+from .security_manager import SecurityManager, SecurityPolicy, get_security_manager, set_security_manager
 from .config import SecureConfig, get_secure_config, set_secure_config
 from .credentials import CredentialManager, get_credential_manager, set_credential_manager
 from .input_sanitizer import InputSanitizer, InputType

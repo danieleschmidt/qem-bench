@@ -169,7 +169,7 @@ class ParallelExecutor:
             config: Execution configuration (uses defaults if None)
         """
         self.config = config or ExecutionConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Execution statistics
         self.stats = {

@@ -208,7 +208,7 @@ class LoadBalancer:
         """
         self.strategy = strategy
         self.config = config or ScalingConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Backend management
         self.backends: Dict[str, Any] = {}
@@ -563,7 +563,7 @@ class AutoScaler:
         """
         self.strategy = strategy
         self.config = config or ScalingConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Load balancer integration
         self.load_balancer: Optional[LoadBalancer] = None

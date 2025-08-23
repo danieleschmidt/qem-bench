@@ -97,7 +97,7 @@ class MemoryCache:
     
     def __init__(self, config: CacheConfig):
         self.config = config
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         self._cache: Dict[str, CacheEntry] = {}
         self._access_order: List[str] = []  # For LRU
@@ -269,7 +269,7 @@ class DiskCache:
     
     def __init__(self, config: CacheConfig):
         self.config = config
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Setup cache directory
         if config.disk_cache_dir:
@@ -474,7 +474,7 @@ class CacheManager:
             config: Cache configuration (uses defaults if None)
         """
         self.config = config or CacheConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Initialize cache levels
         self.memory_cache = MemoryCache(self.config)

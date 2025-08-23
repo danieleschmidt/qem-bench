@@ -167,7 +167,7 @@ class JITCompiler:
             config: Compilation configuration (uses defaults if None)
         """
         self.config = config or CompilationConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Function cache
         self.function_cache = FunctionCache(self.config.cache_size)

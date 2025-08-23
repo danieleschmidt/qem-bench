@@ -165,7 +165,7 @@ class QuantumBenchmarks:
             config: Benchmark configuration
         """
         self.config = config or BenchmarkConfig()
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Test registry
         self.tests: Dict[str, Callable] = {}

@@ -379,7 +379,7 @@ class PerformanceProfiler:
         self.mode = mode
         self.enable = enable
         self.interval = interval
-        self.logger = get_logger(__name__)
+        self.logger = get_logger()
         
         # Profiling state
         self.active_profiles: Dict[str, Dict[str, Any]] = {}
