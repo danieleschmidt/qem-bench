@@ -81,6 +81,29 @@ from .integrated_validation import (
     ComparativeStudy, run_comprehensive_research_validation
 )
 
+# Generation 4: Advanced Research Modules
+
+# Quantum Coherence Preservation
+from .quantum_coherence_preservation import (
+    DynamicalDecouplingProtocol, AdaptiveCoherencePreservation,
+    QuantumErrorSuppression, CoherenceResearchFramework,
+    create_coherence_preservation_system
+)
+
+# Quantum Advantage Detection  
+from .quantum_advantage_detection import (
+    RandomCircuitSamplingAdvantage, VariationalQuantumAdvantage,
+    QuantumMachineLearningAdvantage, CompositeQuantumAdvantageFramework,
+    create_quantum_advantage_detector
+)
+
+# Quantum Neural Architecture Search
+from .quantum_neural_architecture_search import (
+    QuantumArchitectureGenome, QuantumNASConfig,
+    QuantumCircuitSimulator, QuantumNeuralArchitectureSearch,
+    create_quantum_nas
+)
+
 __all__ = [
     # ML QEM
     'MLQEMOptimizer', 'QEMNeuralNetwork', 'AdaptiveParameterLearner',
@@ -128,5 +151,21 @@ __all__ = [
     
     # Integrated Validation
     'IntegratedResearchValidation', 'ResearchValidationResults',
-    'ComparativeStudy', 'run_comprehensive_research_validation'
+    'ComparativeStudy', 'run_comprehensive_research_validation',
+    
+    # Generation 4: Advanced Research Modules
+    # Quantum Coherence Preservation
+    'DynamicalDecouplingProtocol', 'AdaptiveCoherencePreservation', 
+    'QuantumErrorSuppression', 'CoherenceResearchFramework',
+    'create_coherence_preservation_system',
+    
+    # Quantum Advantage Detection
+    'RandomCircuitSamplingAdvantage', 'VariationalQuantumAdvantage',
+    'QuantumMachineLearningAdvantage', 'CompositeQuantumAdvantageFramework',
+    'create_quantum_advantage_detector',
+    
+    # Quantum Neural Architecture Search
+    'QuantumArchitectureGenome', 'QuantumNASConfig',
+    'QuantumCircuitSimulator', 'QuantumNeuralArchitectureSearch',
+    'create_quantum_nas'
 ]
