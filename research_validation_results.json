@@ -1,0 +1,53 @@
+{
+  "method_results": {
+    "causal_adaptive": {
+      "method_name": "Causal-Adaptive QEM (Novel)",
+      "accuracy": -37954.636356718496,
+      "transfer_performance": -19382.75780855626,
+      "statistical_significance": 0.99,
+      "novel_contribution": "First framework using causal inference for QEM optimization"
+    },
+    "traditional_adaptive": {
+      "method_name": "Traditional Adaptive QEM",
+      "accuracy": -39023.51636438933,
+      "transfer_performance": -19930.463192121984,
+      "statistical_significance": 0.7,
+      "novel_contribution": "Existing correlation-based approach"
+    },
+    "static_baseline": {
+      "method_name": "Static Heuristic Baseline",
+      "accuracy": -31640.864884545,
+      "transfer_performance": -31640.864884545,
+      "statistical_significance": 0.0,
+      "novel_contribution": "Traditional fixed-parameter approach"
+    }
+  },
+  "key_findings": {
+    "causal_improvement_over_traditional": 1068.8800076708358,
+    "causal_improvement_over_baseline": -6313.771472173496,
+    "average_transfer_improvement": 547.7053835657266,
+    "statistical_significance": 30735.388526201037
+  },
+  "transfer_results": {
+    "ibm_jakarta": {
+      "causal_transfer_r2": -30770.25147436518,
+      "traditional_transfer_r2": -31369.695419934174,
+      "improvement": 599.4439455689935
+    },
+    "google_sycamore": {
+      "causal_transfer_r2": -11917.297019031215,
+      "traditional_transfer_r2": -11996.643726544344,
+      "improvement": 79.34670751312842
+    },
+    "ionq_aria": {
+      "causal_transfer_r2": -26130.048636131603,
+      "traditional_transfer_r2": -27233.084327407316,
+      "improvement": 1103.0356912757125
+    },
+    "rigetti_aspen": {
+      "causal_transfer_r2": -8713.434104697035,
+      "traditional_transfer_r2": -9122.429294602107,
+      "improvement": 408.99518990507204
+    }
+  }
+}
