@@ -502,7 +502,9 @@ class ErrorRecoveryStrategy:
     
     def recover(self, error: Exception, context: Optional[ErrorContext] = None) -> Any:
         """Attempt to recover from the error."""
-        raise NotImplementedError
+        # Base implementation - just log the error and return None
+        warnings.warn(f"Error recovery attempted for {type(error).__name__}: {str(error)}")
+        return None
 
 
 class RetryStrategy(ErrorRecoveryStrategy):
