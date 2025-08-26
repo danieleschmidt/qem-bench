@@ -149,8 +149,39 @@ class NoiseModel(ABC):
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> "NoiseModel":
         """Create noise model from dictionary representation."""
-        # This would need specific implementation for each subclass
-        raise NotImplementedError("Subclasses must implement from_dict")
+        # Create a generic noise model instance
+        from .composite import CompositeNoiseModel
+        
+        name = data.get("name", "generic_noise_model")
+        model_type = data.get("type", "GenericNoiseModel")
+        
+        # Create base model - subclasses should override this method
+        if model_type == "CompositeNoiseModel":
+            model = CompositeNoiseModel([])
+        else:
+            # Create a basic generic noise model
+            class GenericNoiseModel(NoiseModel):
+                def get_noise_channels(self, circuit):
+                    return list(self.channels.values())
+                
+                def apply_noise(self, circuit):
+                    return circuit  # Basic pass-through
+            
+            model = GenericNoiseModel(name)
+        
+        # Add channels from dictionary
+        channels_data = data.get("channels", {})
+        for channel_name, channel_data in channels_data.items():
+            kraus_ops = [jnp.array(k) for k in channel_data["kraus_operators"]]
+            channel = NoiseChannel(
+                name=channel_data["name"],
+                kraus_operators=kraus_ops,
+                probability=channel_data["probability"],
+                qubits=channel_data["qubits"]
+            )
+            model.add_channel(channel)
+        
+        return model
     
     def __str__(self) -> str:
         """String representation of noise model."""
